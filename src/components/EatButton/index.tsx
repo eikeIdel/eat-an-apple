@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { Button } from './styles';
 import { animated, useSpring } from 'react-spring';
-import { Any } from '@react-spring/types';
 
 interface Props {
   className?: string;
   buttonLabel: string;
   buttonHandler: (buttonLabel: string) => void;
   setBiteApple?: React.Dispatch<React.SetStateAction<boolean>>;
+  greyOverlay: boolean;
 }
-
-// interface EatButton {
-//   onClick: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
-// }
 
 const EatButton: React.FC<Props> = ({
   className,
@@ -20,6 +16,7 @@ const EatButton: React.FC<Props> = ({
   buttonHandler,
   buttonLabel,
   setBiteApple,
+  greyOverlay,
 }) => {
   const [clicked, setClicked] = useState<boolean>(false);
   const { bounce } = useSpring({
@@ -44,7 +41,7 @@ const EatButton: React.FC<Props> = ({
 
   const handleClick = () => {
     setClicked(!clicked);
-    setBiteApple ? setBiteApple((bite) => !bite) : '';
+    // setBiteApple ? setBiteApple((bite) => !bite) : '';
     buttonHandler(buttonLabel);
   };
 
@@ -53,7 +50,8 @@ const EatButton: React.FC<Props> = ({
       <Button
         as={animated.div}
         style={bounceStyle}
-        onClick={() => handleClick()}
+        onClick={!greyOverlay ? () => handleClick() : undefined}
+        className={greyOverlay ? 'greyish' : ''}
       >
         {children}
       </Button>

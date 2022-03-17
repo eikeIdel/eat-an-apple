@@ -1,5 +1,5 @@
 //react
-import React, { useState, FC, useEffect, useCallback } from 'react';
+import { useState, FC, useEffect } from 'react';
 
 //styled-components
 import { AppleImage } from './styles';
@@ -15,21 +15,22 @@ interface Props {
 
 const AppleImageContainer: FC<Props> = ({ biteApple }) => {
   const [imageID, setImageID] = useState<number>(0);
-  const appleImages = [
+  const appleImages: { src: string; alt: string; showImage: boolean }[] = [
     { src: OriginalApple, alt: 'originalApple', showImage: imageID === 0 },
     { src: AppleBiteOne, alt: 'AppleBiteOne', showImage: imageID === 1 },
     { src: AppleBiteTwo, alt: 'AppleBiteTwo', showImage: imageID === 2 },
   ];
+
   useEffect(() => {
     let count: number = 0;
-    const biteInterval = setInterval(() => {
+    const biteInterval: number = window.setInterval(() => {
       setImageID((imageID) => (imageID + 1) % 3);
       count++;
 
       if (count === 3) {
         clearInterval(biteInterval);
       }
-    }, 300);
+    }, 250);
   }, [biteApple]);
 
   return (

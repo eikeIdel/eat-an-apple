@@ -7,11 +7,13 @@ export default createGlobalStyle`
     outline:0;
     box-sizing:border-box;
     font-family:'Open Sans', sans-serif;
+    max-width: 400px;
+    max-height: 900px;
     
 }
 
 #root{
-    margin: 0 auto;
     
+    margin: 0 auto
 }
 `;

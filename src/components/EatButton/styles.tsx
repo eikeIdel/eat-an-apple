@@ -11,18 +11,12 @@ export const Button = styled.div`
   letter-spacing: 0.2rem;
   border: #ab0500;
   border-style: solid;
-  border-width: 1px;
+
   border-radius: 15px;
 
-  &.more {
-    transform: rotate(-1deg);
-  }
-
-  &.less {
-    transform: rotate(1.27deg);
-  }
-
-  &.reset {
-    transform: rotate(-2.09deg);
+  &.greyish {
+    color: #2e0300;
+    border: #2e0300;
+    border-style: solid;
   }
 `;
